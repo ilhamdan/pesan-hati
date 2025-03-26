@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pesan Istimewa untuk Annisa</title>
+    <meta name="author" content="Ilham Dani">
+
+    <!-- Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Pacifico&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Base Styles */
+        
+        body {
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #ff6b6b, #5f27cd);
+            position: relative;
+        }
+        
+        .container {
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            margin: 20px 0;
+            color: #f5f6fa;
+        }
+        /* Typography */
+        
+        .romantic-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 10px auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.5);
+            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.7);
+            paint-order: stroke fill;
+            width: 100%;
+        }
+        
+        .elegant-text {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2), 0 0 3px rgba(255, 255, 255, 0.4);
+            text-align: center;
+            margin: 10px auto;
+        }
+        
+        .handwritten {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25), 0 0 5px rgba(255, 255, 255, 0.5);
+            -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin: 10px auto;
+        }
+        
+        .button-text {
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        /* Elements */
+        
+        .moon {
+            position: fixed;
+            top: 5%;
+            right: 5%;
+            width: 60px;
+            height: 60px;
+            background: #f5f6fa;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #f5f6fa;
+            animation: pulse 4s infinite alternate;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+            z-index: 1;
+        }
+        
+        .petal {
+            position: absolute;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23e84393" d="M50 0 Q70 30 100 50 Q70 70 50 100 Q30 70 0 50 Q30 30 50 0"/></svg>') no-repeat;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #e84393;
+            font-size: 24px;
+            animation: floatHeart 4s linear infinite;
+            z-index: 1;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+        /* Content */
+        
+        .response-buttons {
+            display: none;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+            flex-direction: column;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8), 0 0 4px rgba(255, 255, 255, 0.5);
+            -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.9);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .confession {
+            color: #e84393;
+            opacity: 0;
+            transition: all 1s ease-in-out;
+            transform: translateY(20px);
+            margin: 10px 0;
+            letter-spacing: 0.5px;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0 0 5px rgba(255, 255, 255, 0.7);
+            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.8);
+            text-align: center;
+            width: 100%;
+        }
+        /* Buttons */
+        
+        .button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #e84393, #fd79a8);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(232, 67, 147, 0.4);
+            margin: 10px 5px;
+            letter-spacing: 1px;
+            min-width: 150px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            text-align: center;
+            width: 80%;
+            max-width: 250px;
+        }
+        
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(232, 67, 147, 0.6);
+        }
+        
+        .button-secondary {
+            background: linear-gradient(to right, #6c5ce7, #a29bfe);
+        }
+        
+        .whatsapp-button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 200px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 80%;
+            max-width: 250px;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.4);
+        }
+        
+        .whatsapp-button i {
+            font-size: 1.2rem;
+        }
+        
+        .intro {
+            font-size: 1.1rem;
+            color: #dde0e3;
+            margin-bottom: 15px;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8), 0 0 4px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+        }
+        
+        .creator-credit {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        @keyframes pulse {
+            from {
+                box-shadow: 0 0 20px #f5f6fa;
+            }
+            to {
+                box-shadow: 0 0 40px #f5f6fa;
+            }
+        }
+        
+        @keyframes twinkle {
+            from {
+                opacity: 0.3;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) scale(0.7) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px) scale(1.2) rotate(180deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-200px) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Media Queries for Mobile */
+        
+        @media (max-width: 768px) {
+            .romantic-title {
+                font-size: 3.3rem;
+            }
+            .handwritten,
+            .confession {
+                font-size: 1.8rem;
+            }
+            .message {
+                font-size: 1.5rem;
+            }
+            .intro {
+                font-size: 1.5rem;
+            }
+            .button,
+            .whatsapp-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                width: 90%;
+            }
+            .container {
+                padding: 15px;
+                width: 95%;
+            }
+            .moon {
+                width: 40px;
+                height: 40px;
+            }
+            .petal {
+                width: 15px;
+                height: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .romantic-title {
+                font-size: 1.8rem;
+            }
+            .handwritten,
+            .confession {
+                font-size: 1.8rem;
+            }
+            .button,
+            .whatsapp-button {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                min-width: 120px;
+            }
+            .response-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .response-buttons .button {
+                margin: 5px 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="moon"></div>
+    <div class="container">
+        <h1 class="romantic-title">Selamat Idul Fitri🌙</h1>
+        <h1 class="romantic-title">untuk Annisa Fitriani ✨</h1>
+        <p class="intro elegant-text">Ada pesan istimewa untukmu di hari yang suci ini...</p>
+
+        <div id="step1">
+            <p class="message elegant-text" id="greetingMessage">Mohon maaf lahir dan batin🌸✨</p>
+            <button class="button button-text" onclick="nextStep(1)">Lanjutkan</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <p class="confession handwritten">Di bulan suci ini, aku ingin menyampaikan sesuatu...</p>
+            <button class="button button-text" onclick="nextStep(2)">Apa itu?</button>
+        </div>
+
+        <div id="step3" class="hidden">
+            <p class="confession handwritten">Aku melihat cahaya dalam dirimu yang tak pernah pudar dari ingatanku...</p>
+            <button class="button button-text" onclick="nextStep(3)">Lanjutkan</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <p class="confession handwritten">Kau adalah alasan aku percaya bahwa cinta sejati itu ada - maukah kita buktikan bersama?, Aku berjanji akan menyayangimu dengan tulus</p>
+            <p class="confession handwritten">Annisa, maukah kamu menjadi kekasihku?</p>
+            <div class="response-buttons" id="responseButtons">
+                <button class="button button-text" onclick="chooseResponse(true)">Ya, Aku Mau!</button>
+                <button class="button button-secondary button-text" onclick="chooseResponse(false)">Aku Butuh Waktu</button>
+            </div>
+            <button class="button button-text" id="showResponseBtn" onclick="showResponseButtons()">Jawab</button>
+        </div>
+
+        <div id="positiveResponse" class="hidden">
+            <p class="confession handwritten">💖 Alhamdulillah! 💖</p>
+            <p class="confession handwritten">Inilah hari terindah dalam hidupku</p>
+            <p class="confession handwritten">Aku berjanji akan membuatmu bahagia</p>
+            <button id="whatsappButtonYa" class="whatsapp-button button-text">
+                <i class="fab fa-whatsapp"></i> Kirim Pesan Cintaku
+            </button>
+            <button class="button button-text" onclick="location.reload()">Ulangi Pesan</button>
+        </div>
+
+        <div id="neutralResponse" class="hidden">
+            <p class="confession handwritten">Aku mengerti dan menghargai perasaanmu</p>
+            <p class="confession handwritten">Aku akan menunggu dengan sabar</p>
+            <p class="confession handwritten">Yang penting kau tahu perasaanku yang tulus</p>
+            <button id="whatsappButtonTidak" class="whatsapp-button button-text">
+                <i class="fab fa-whatsapp"></i> Kirim Pesan Harapanku
+            </button>
+            <button class="button button-text" onclick="location.reload()">Ulangi Pesan</button>
+        </div>
+    </div>
+
+    <div class="creator-credit">Dibuat dengan ❤️ oleh Ilham Dani</div>
+
+    <script>
+        // GANTI DENGAN NOMOR WHATSAPP ANDA (format: 6281234567890)
+        const YOUR_WHATSAPP_NUMBER = "6283188681324";
+        let userResponse = null;
+
+        // Fungsi untuk memilih respons (Ya/Tidak)
+        function chooseResponse(accepted) {
+            userResponse = accepted;
+            showVisualResponse(accepted);
+        }
+
+        // Fungsi untuk mengirim pesan ke WhatsApp
+        function sendToWhatsApp() {
+            let message = userResponse === true ?
+                "Ya, aku mau, mari kita mulai dengan bismillah" :
+                "Aku butuh waktu untuk memikirkannya, tapi aku menghargai perasaanmu";
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+
+            // Update tampilan tombol
+            const button = document.getElementById(userResponse ? 'whatsappButtonYa' : 'whatsappButtonTidak');
+            button.innerHTML = userResponse ?
+                '<i class="fas fa-heart"></i> Pesan Terkirim!' :
+                '<i class="fas fa-clock"></i> Pesan Terkirim!';
+            button.style.background = 'linear-gradient(to right, #4CAF50, #2E7D32)';
+
+            // Reset tombol setelah 3 detik
+            setTimeout(() => {
+                button.innerHTML = userResponse ?
+                    '<i class="fab fa-whatsapp"></i> Kirim Pesan Cintaku' :
+                    '<i class="fab fa-whatsapp"></i> Kirim Pesan Harapanku';
+                button.style.background = 'linear-gradient(to right, #25D366, #128C7E)';
+            }, 3000);
+        }
+
+        // Create stars
+        function createStars() {
+            for (let i = 0; i < 50; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                star.style.width = `${Math.random() * 4 + 2}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(star);
+            }
+        }
+
+        // Create falling petals
+        function createPetals() {
+            for (let i = 0; i < 15; i++) {
+                let petal = document.createElement("div");
+                petal.classList.add("petal");
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.top = `${Math.random() * -100}px`;
+                petal.style.opacity = Math.random() * 0.5 + 0.3;
+                petal.style.width = `${Math.random() * 20 + 10}px`;
+                petal.style.height = petal.style.width;
+                petal.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(petal);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.textContent = "❤️";
+                document.body.appendChild(heart);
+                let x = Math.random() * window.innerWidth;
+                let y = window.innerHeight;
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                heart.style.animationDuration = `${Math.random() * 4 + 2}s`;
+                setTimeout(() => {
+                    heart.style.transition = "opacity 1s";
+                    heart.style.opacity = "0";
+                    setTimeout(() => heart.remove(), 1000);
+                }, 1000);
+            }
+        }
+
+        // Show current step and hide others
+        function nextStep(currentStep) {
+            document.getElementById(`step${currentStep}`).classList.add("hidden");
+            document.getElementById(`step${currentStep+1}`).classList.remove("hidden");
+
+            // Animate messages
+            const messages = document.querySelectorAll(`#step${currentStep+1} .confession, #step${currentStep+1} .message`);
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    msg.style.opacity = "1";
+                    msg.style.transform = "translateY(0)";
+                }, index * 500);
+            });
+
+            // Add hearts on important steps
+            if (currentStep >= 2) {
+                createFloatingHearts();
+            }
+        }
+
+        // Show response buttons
+        function showResponseButtons() {
+            document.getElementById("responseButtons").style.display = "flex";
+            document.getElementById("showResponseBtn").style.display = "none";
+            createFloatingHearts();
+        }
+
+        // Show visual response
+        function showVisualResponse(accepted) {
+            document.getElementById("step4").classList.add("hidden");
+
+            if (accepted) {
+                document.getElementById("positiveResponse").classList.remove("hidden");
+                // Create celebration hearts
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => createFloatingHearts(), i * 100);
+                }
+            } else {
+                document.getElementById("neutralResponse").classList.remove("hidden");
+            }
+
+            // Animate response messages
+            const responses = document.querySelectorAll(`#${accepted ? 'positive' : 'neutral'}Response .confession`);
+            responses.forEach((msg, index) => {
+                setTimeout(() => {
+                    msg.style.opacity = "1";
+                    msg.style.transform = "translateY(0)";
+                }, index * 800);
+            });
+        }
+
+        // Initialize
+        window.onload = function() {
+            createStars();
+            createPetals();
+
+            // Tambahkan event listener untuk tombol WhatsApp
+            document.getElementById('whatsappButtonYa').addEventListener('click', sendToWhatsApp);
+            document.getElementById('whatsappButtonTidak').addEventListener('click', sendToWhatsApp);
+
+            // Show first message
+            setTimeout(() => {
+                document.getElementById("greetingMessage").style.opacity = "1";
+            }, 1000);
+        };
+    </script>
+</body>
+
+</html>
